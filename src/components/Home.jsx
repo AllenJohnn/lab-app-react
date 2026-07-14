@@ -1,28 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./NavBar";
 
 const Home = () => {
   return (
-    <div>
-      <NavBar />
-
-      <div
-        className="container d-flex justify-content-center align-items-center"
-        style={{ height: "80vh" }}
+    <div 
+      style={{ 
+        display: "flex", 
+        justifyContent: "center", 
+        alignItems: "center", 
+        width: "100vw", 
+        height: "80vh",
+        backgroundColor: "#ffffff",
+        margin: "0",
+        padding: "0",
+        border: "none"
+      }}
+    >
+      <div 
+        style={{ 
+          textAlign: "center", 
+          border: "1px solid #dee2e6", 
+          padding: "3rem", 
+          borderRadius: "8px",
+          backgroundColor: "#ffffff",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.05)"
+        }}
       >
-        <div className="text-center">
-          <h1>Lab Application</h1>
+        <h1 style={{ color: "#212529", marginBottom: "1.5rem" }}>
+          Lab Application
+        </h1>
 
-          <div className="mt-4">
-            <Link to="/add" className="btn btn-primary me-3">
-              Add Data
-            </Link>
+        <div>
+          <Link to="/add" className="btn btn-primary me-3">
+            Add Data
+          </Link>
 
-            <Link to="/view" className="btn btn-success">
-              View Data
-            </Link>
-          </div>
+          <Link to="/view" className="btn btn-success">
+            View Data
+          </Link>
         </div>
       </div>
     </div>

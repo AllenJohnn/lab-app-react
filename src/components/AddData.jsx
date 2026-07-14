@@ -1,61 +1,15 @@
-import axios from "axios";
-import React, { useState } from "react";
-import NavBar from "./NavBar";
+return (
+  <div>
+    <NavBar />
 
-const AddData = () => {
-  const [input, changeInput] = useState({
-    name: "",
-    department: "",
-    semester: "",
-    course: "",
-    fuel_type: "",
-    systemnumber: "",
-    logintime: "",
-    logouttime: "",
-    date: "",
-  });
-
-  const inputHandler = (event) => {
-    changeInput({
-      ...input,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const submitHandler = () => {
-    axios
-      .post("https://host-demo-app.onrender.com/api/add-car", input)
-      .then((response) => {
-        console.log(response.data);
-        alert("Car Added Successfully!");
-
-        changeInput({
-          name: "",
-          department: "",
-          semester: "",
-          course: "",
-          systemnumber: "",
-          logintime: "",
-          logouttime: "",
-          date: "",
-        });
-      })
-      .catch((error) => {
-        console.log(error.response?.data);
-        console.log(error.response?.status);
-      });
-  };
-
-  return (
-    <div>
-      <NavBar />
-      <div className="container mt-4">
-        <div className="row">
-          <div className="col-12">
+    <div className="container py-4">
+      <div className="row justify-content-center">
+        <div className="col-lg-10">
+          <div className="card shadow p-4">
             <h2 className="text-center mb-4">Add Data</h2>
 
-            <div className="row">
-              <div className="col-md-6 mb-3">
+            <div className="row g-3">
+              <div className="col-md-6">
                 <label className="form-label">Name</label>
                 <input
                   type="text"
@@ -66,21 +20,26 @@ const AddData = () => {
                 />
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-md-6">
                 <label className="form-label">Department</label>
-                <input
-                  type="text"
-                  className="form-control"
+                <select
+                  className="form-select"
                   name="department"
                   value={input.department}
                   onChange={inputHandler}
-                />
+                >
+                  <option value="">Select Department</option>
+                  <option value="CS">CS</option>
+                  <option value="IT">IT</option>
+                  <option value="EC">EC</option>
+                  <option value="ME">ME</option>
+                </select>
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-md-6">
                 <label className="form-label">Semester</label>
                 <select
-                  className="form-control"
+                  className="form-select"
                   name="semester"
                   value={input.semester}
                   onChange={inputHandler}
@@ -93,18 +52,23 @@ const AddData = () => {
                 </select>
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-md-6">
                 <label className="form-label">Course</label>
-                <input
-                  type="text"
-                  className="form-control"
+                <select
+                  className="form-select"
                   name="course"
                   value={input.course}
                   onChange={inputHandler}
-                />
+                >
+                  <option value="">Select Course</option>
+                  <option value="MCA">MCA</option>
+                  <option value="iMCA">iMCA</option>
+                  <option value="CSE">CSE</option>
+                  <option value="MECH">MECH</option>
+                </select>
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-md-6">
                 <label className="form-label">System Number</label>
                 <input
                   type="text"
@@ -115,7 +79,7 @@ const AddData = () => {
                 />
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-md-6">
                 <label className="form-label">Login Time</label>
                 <input
                   type="time"
@@ -126,7 +90,7 @@ const AddData = () => {
                 />
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-md-6">
                 <label className="form-label">Logout Time</label>
                 <input
                   type="time"
@@ -137,7 +101,7 @@ const AddData = () => {
                 />
               </div>
 
-              <div className="col-md-6 mb-3">
+              <div className="col-md-6">
                 <label className="form-label">Date</label>
                 <input
                   type="date"
@@ -148,9 +112,11 @@ const AddData = () => {
                 />
               </div>
 
-              
               <div className="col-12 text-center mt-3">
-                <button className="btn btn-primary" onClick={submitHandler}>
+                <button
+                  className="btn btn-primary px-5"
+                  onClick={submitHandler}
+                >
                   Add Data
                 </button>
               </div>
@@ -159,7 +125,5 @@ const AddData = () => {
         </div>
       </div>
     </div>
-  );
-};
-
-export default AddData;
+  </div>
+);

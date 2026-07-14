@@ -6,7 +6,7 @@ const ViewAll = () => {
   const [data, changeData] = useState([]);
   const fetchData = () => {
     axios
-      .get("https://host-demo-app.onrender.com/api/cars")
+      .get("http://localhost:3000/view-data")
       .then((response) => {
         changeData(response.data);
       })
@@ -22,7 +22,7 @@ const ViewAll = () => {
       <NavBar />
       <div className="container mt-4">
         <h2 className="text-center mb-4">
-          <b>View Cars</b>
+          <b>View Data</b>
         </h2>
         <table className="table">
           <thead>
@@ -39,21 +39,21 @@ const ViewAll = () => {
           </thead>
 
           <tbody>
-            {data.map((value, index) => {
-              return (
-                <tr key={value._id || index}>
-                  <td>{value.name}</td>
-                  <td>{value.department}</td>
-                  <td>{value.semester}</td>
-                  <td>{value.course}</td>
-                  <td>{value.systemnumber}</td>
-                  <td>{value.logintime}</td>
-                  <td>{value.logouttime}</td>
-                  <td>{value.date}</td>
-                </tr>
-              );
-            })}
-          </tbody>
+  {data
+    .filter((item) => item.name)
+    .map((value, index) => (
+      <tr key={value._id}>
+        <td>{value.name}</td>
+        <td>{value.department}</td>
+        <td>{value.semester}</td>
+        <td>{value.course}</td>
+        <td>{value.systemnumber}</td>
+        <td>{value.logintime}</td>
+        <td>{value.logouttime}</td>
+        <td>{value.date}</td>
+      </tr>
+    ))}
+</tbody>
         </table>
       </div>
     </div>
